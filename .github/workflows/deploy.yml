@@ -10,13 +10,14 @@ jobs:
     env:
       CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
     steps:
-      - run: npx convex deploy
+      - run: npm i
+      - run: cd packages/game-client && npx convex deploy
 
   deploy-server:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install -g @hathora/cli
+      - run: npm i -g @hathora/cli
       - run: >
           hathora-cloud deploy \
             --appId app-5d7f5bc8-f781-4ce9-b91c-9d0f188bf289 \
