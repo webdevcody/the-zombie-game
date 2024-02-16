@@ -1,0 +1,28 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-convex:
+    runs-on: ubuntu-latest
+    env:
+      CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+    steps:
+      - run: npx convex deploy
+
+  deploy-server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install -g @hathora/cli
+      - run: >
+          hathora-cloud deploy \
+            --appId app-5d7f5bc8-f781-4ce9-b91c-9d0f188bf289 \
+            --token ${{ secrets.HATHORA_TOKEN }} \
+            --planName tiny \
+            --roomsPerProcess 5 \
+            --transportType tls \
+            --containerPort 8000 \
+            --env '[{"name": "HATHORA_TOKEN", "value": "${{ secrets.HATHORA_TOKEN }}"}, {"name": "NODE_ENV", "value": "production"}]'
