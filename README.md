@@ -1,0 +1,4 @@
+- `npm i`
+- create convex account at [Convex](https://www.convex.dev)
+- `cd packages/game-client && npx convex dev`
+- `npm run dev`  in project root

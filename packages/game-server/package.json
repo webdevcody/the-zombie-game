@@ -1,0 +1,24 @@
+{
+  "name": "@game/game-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "esbuild src/index.ts --platform=node --tsconfig=tsconfig.json --bundle  --outfile=dist/index.js",
+    "deploy": "hathora-cloud deploy"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@game/sdk": "*",
+    "@hathora/cli": "^1.12.0",
+    "@hathora/cloud-sdk-typescript": "^2.2.4",
+    "dotenv": "^16.3.1",
+    "socket.io": "^4.5.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "tsx": "^3.14.0"
+  }
+}
