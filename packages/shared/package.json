@@ -1,0 +1,11 @@
+{
+  "name": "@game/shared",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "devDependencies": {
+    "typescript": "~5.0.0"
+  },
+  "scripts": {
+    "dev": "echo 1"
+  }
+}

@@ -1,9 +1,9 @@
 import 'dotenv/config';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
-import { game } from '@game/sdk';
+import { GameSession } from '@game/sdk';
 
-console.log(game);
+console.log(GameSession);
 const PORT = process.env.PORT || 8000;
 
 async function main() {

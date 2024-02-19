@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { GameSession } from "@game/sdk";
+import { useEffect, useState } from "react";
+import { GameView } from "./GameView";
+import { useKey } from "react-use";
+
+const serverSession = GameSession.createServerSession();
+serverSession.start();
+const clientSession = GameSession.createClientSession();
+
+serverSession.subscribe((state) => {
+  clientSession.setState(state);
+});
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [state, setState] = useState(clientSession.getSerializedState());
+  useEffect(() => {
+    return clientSession.subscribe((newState) => {
+      setState(newState);
+    });
+  }, []);
+
+  const move = (xDiff: number, yDiff: number) => () => {
+    serverSession.dispatchGameInput({
+      type: "move",
+      payload: {
+        x: state.player.position.x + xDiff,
+        y: state.player.position.y + yDiff,
+      },
+    });
+  };
+
+  useKey((e) => e.code === "ArrowUp", move(0, -10));
+  useKey((e) => e.code === "ArrowDown", move(0, 10));
+  useKey((e) => e.code === "ArrowLeft", move(-10, 0));
+  useKey((e) => e.code === "ArrowRight", move(10, 0));
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GameView state={state} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
