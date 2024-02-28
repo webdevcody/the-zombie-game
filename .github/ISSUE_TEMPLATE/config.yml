@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🤔 Long question or ideas?
+    url: https://github.com/webdevcody/the-zombie-game/discussions
+    about: Ask long-form questions and discuss ideas.
+  - name: 🤖 Discord
+    url: https://discord.gg/4kGbBaa
+    about: Join to our Society!

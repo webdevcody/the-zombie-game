@@ -1,0 +1,66 @@
+name: "✨Idea - Feature Request"
+title: "✨[Idea] - <TITLE_OF_ISSUE>"
+description: Share your ideas with us!
+labels: [feature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Wow, good to see you there!
+        It's good to know you're creative ✨
+
+        Before submitting a new feature request, please check the links below to see if there somebody already requested it:
+          - the-zombie-game's [Idea's tab](https://github.com/webdevcody/the-zombie-game/discussions/categories/ideas)
+          - the-zombie-game's [Closed ideas tab](https://github.com/webdevcody/the-zombie-game/discussions/categories/ideas?discussions_q=category%3AIdeas+is%3Aclosed)
+          - the-zombie-game's [Discussions tab](https://github.com/webdevcody/the-zombie-game/discussions) 
+
+        Please fill in as much of the template below as you're able. If you don't know the answer to a question, that's okay, but please try to fill in as much as you can.
+  - type: input
+    id: idea
+    attributes:
+      label: Idea ✨
+      description: Please give a short description of the feature
+      placeholder: e.g. I want to add a confetti effect when user clicks the button to open chest.
+    validations:
+      required: true
+
+  - type: input
+    id: work
+    attributes:
+      label: How it should work?
+      description: Give a description of how it should work
+      placeholder: |
+        e.g After clicking button, everywhere should be confetti!
+    validations:
+      required: true
+
+  - type: input
+    id: solution
+    attributes:
+      label: What it gonna solve? Why we should add it?
+      description: How it will help you and others? What kind of problems it will solve?.
+      placeholder: |
+        e.g It will give a better user experience and looks cool!
+    validations:
+      required: true
+
+  - type: input
+    id: implementation
+    attributes:
+      label: How it should be implemented?
+      description: What do you expect, how it should be implemented?
+      placeholder: |
+
+    validations:
+      required: true
+
+  - type: input
+    id: example
+    attributes:
+      label: Example of usage / I have seen it in other library/game
+      description: |
+        You can give a link to currently implemented feature in other library or game / give your own example.
+        (Images, videos, code snippets, etc.)
+      placeholder: |
+        e.g Similar feature is implemented in XXX lib/game.
+        Here is link: XXXX
